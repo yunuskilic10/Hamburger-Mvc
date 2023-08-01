@@ -1,0 +1,66 @@
+﻿@model int
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 d-flex align-items-center">
+            <table class="table">
+                <tr>
+                    <td>
+                        <h1 class="display-4"> Welcome! </h1>
+                        @if (Model==-1)
+                        {
+                            <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-danger"> Order Now </a>   
+                        }
+                        else
+                        {
+                            <a asp-area="User" asp-controller="Order" asp-action="Index" class="btn btn-danger"> Order Now </a>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h2>About Us</h2>
+                        <p> As AvocadoBurger House, we prepare high quality hamburgers using natural and fresh ingredients. Our meats are selected from the highest quality sources, while our vegetables and sauces are sourced fresh daily. We aim to provide a healthy and delicious experience to our customers. </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <h2>Working Hours</h2>
+                        <table class="table">
+                            <tr>
+                                <td>Monday</td>
+                                <td>9:00 AM - 8:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Tuesday</td>
+                                <td>9:00 AM - 8:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Wednesday</td>
+                                <td>9:00 AM - 8:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Thursday</td>
+                                <td>9:00 AM - 8:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Friday</td>
+                                <td>9:00 AM - 10:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Saturday</td>
+                                <td>10:00 AM - 10:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Sunday</td>
+                                <td>10:00 AM - 10:00 PM</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-6 d-flex align-items-center">
+            <img src="~/HamburgerCoverImages/avocado.jpg" alt="Hamburger Image" class="img-fluid">
+        </div>
+    </div>
+</div>

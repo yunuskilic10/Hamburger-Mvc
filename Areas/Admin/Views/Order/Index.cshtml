@@ -1,0 +1,56 @@
+﻿@model List<MVCProjectHamburger.Models.Entities.Concrete.ShoppingCart>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Name</th>
+            <th>Total Price</th>
+            <th>Number</th>
+            <th>Menu Size</th>
+            
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            bool isNewOrder = false;
+            if (item.Order.ID != Model.First().Order.ID)
+            {
+                if (item.Order.ID != Model.ElementAt(Model.IndexOf(item) - 1).Order.ID)
+                {
+                    isNewOrder = true;
+                }
+            }
+
+            <tr>
+                @if (isNewOrder)
+                {
+                    <td colspan="8" style="border-top: 2px solid black;"></td>
+                }
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Order.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MenuSize)
+                </td>
+                
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID" style="color:red">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID" style="color:red">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MVCProjectHamburger.Models.Entities.Concrete.Order>
+
+@{
+    ViewData["Title"] = "Accountancy";
+}
+
+<h1 class="text-center">Accountancy</h1>
+<br />
+
+<style>
+    
+
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center; /* Sütunlardaki verileri ortalamak için "text-align: center" kullanıyoruz. */
+    }
+
+    
+</style>
+<table class="table table-dark table-striped">
+
+    <thead>
+        <tr>
+            <th >
+                @Html.DisplayNameFor(model => model.AppUser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalPrice)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppUserID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPrice)
+            </td>
+            
+        </tr>
+}
+          @{  int totalPrice = Model.Sum(item => item.TotalPrice);}
+    </tbody>
+</table>
+<br />
+<h1 class="text-center">
+    Total Revenue : @totalPrice ₺
+</h1>

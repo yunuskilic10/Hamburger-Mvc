@@ -1,0 +1,65 @@
+﻿
+@*<h1> Admin Control </h1>
+
+
+<html>
+<head>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: red;
+            color: white;
+            text-align: left;
+            padding: 8px;
+        }
+
+        td {
+            background-color: yellow;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Menu</th>
+        </tr>
+        <tr>
+            <td><a asp-area="Admin" asp-controller="Menu" asp-action="Index"> Menu </a></td>
+        </tr>
+        <tr>
+            <td><a asp-area="Admin" asp-controller="ExtraIngredient" asp-action="Index"> Extra Ingredient </a></td>
+        </tr>
+        <tr>
+            <td><a asp-area="Admin" asp-controller="Order" asp-action="Index"> Orders </a></td>
+        </tr>
+    </table>
+</body>
+</html>*@
+
+@*<table class="table">
+    <thead>
+        <tr>
+            <th> Admin Control </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a asp-area="Admin" asp-controller="Menu" asp-action="Index"> Menu </a></td>
+        </tr>
+        <tr>
+            <td><a asp-area="Admin" asp-controller="ExtraIngredient" asp-action="Index"> Extra Ingredient </a></td>
+        </tr>
+        <tr>
+            <td><a asp-area="Admin" asp-controller="Order" asp-action="Index"> Extra Ingredient </a></td>
+        </tr>
+    </tbody>
+</table>*@

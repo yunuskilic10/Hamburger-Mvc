@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MVCProjectHamburger.Models.Entities.Concrete.ExtraIngredient>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@*<h1>Index</h1>*@
+
+<p>
+    <a asp-action="Create" style="color: darkred; font-weight-bold">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CoverImage)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <img src="/ExtraIngredientCoverImages/@item.CoverImage" width="150" height="130">
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID" style="color:red" >Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID" style="color:red">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

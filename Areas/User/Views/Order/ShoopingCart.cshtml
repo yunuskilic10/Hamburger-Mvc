@@ -1,0 +1,54 @@
+﻿
+
+@model List<MVCProjectHamburger.Models.Entities.Concrete.ShoppingCart>
+
+@{
+    ViewData["Title"] = "ShoopingCart";
+}
+
+<h1> Shopping Cart </h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>OrderID</th>
+            <th>Name</th>
+            <th>Number</th>
+            <th>Menu Size</th>
+            <th>Total Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.OrderId</td>
+                <td>@item.Name</td>
+                <td>@item.Number</td>
+                <td>@item.MenuSize</td>
+                <td>@item.TotalPrice</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID" style="color:red">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID" style="color:red"> Delete </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<form sp-action="ShoopingCart" method="post">
+
+@{
+    int total = 0;
+    foreach (ShoppingCart item in Model)
+    {
+        total += item.TotalPrice;
+    }
+}
+<h1>Total Price: @total</h1>
+    <a class="btn btn-danger" asp-area="User" asp-controller="Order" asp-action="Index"> Continue Order </a>
+    <br />
+    <input type="submit" value="Order" class="btn btn-dark" />
+</form>
+

@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head >
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> AvocadoBurger House </title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MVCProjectHamburger.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.1/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+        .navbar {
+            background-color: #5c1212 !important; /* Add !important to override other conflicting styles */
+        }
+
+        .hover-effect:hover {
+            color: red;
+        }
+
+        .text-font {
+            font-family: Arial;
+            color: darkred;
+        }
+    </style>
+
+</head>
+<body>
+    <header class="m-3" >
+        <nav class="navbar navbar-expand-md navbar-toggleable-md navbar-light bg-light border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <a class="navbar-brand">
+                        <img src="/HamburgerCoverImages/LogoSonHal.png" width="160px" height="100px" />
+                    </a>
+                </a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" style="font-size:30px;font-weight:bold;color:white" asp-action="Index"> Avocado Burger House </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle font-weight-bold text-light text-bold" style="color:white; font-size:30px" href="#" id="adminDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Admin Control
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="adminDropdown">
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Menu" asp-action="Index">Add Menu</a>
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="ExtraIngredient" asp-action="Index">Add Extra Ingredient</a>
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Order" asp-action="Index">Orders</a>
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Order" asp-action="Accountancy">Accountancy</a>
+                                </div>
+                            </li>
+                        }
+                        else if(User.IsInRole("User"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle font-weight-bold text-light text-bold " style="color:white; font-size:30px" href="#" id="adminDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    User Control
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="adminDropdown">
+                                    <a class="dropdown-item" asp-area="User" asp-controller="Order" asp-action="Index"> Menu </a>
+                                    <a class="dropdown-item" asp-area="User" asp-controller="Order" asp-action="ShoopingCart"> Shopping Cart </a>
+                                </div>
+                            </li>
+                        }
+
+
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <div class="container">
+
+        <main role="main" class="pb-3">
+
+            @RenderBody()
+        </main>
+    </div>
+
+
+    <footer class="text-center text-lg-start bg-light text-muted">
+        <!-- Section: Social media -->
+        <section class="d-flex justify-content-end ">
+            <!-- Left -->
+            
+            <!-- Left -->
+            <!-- Right -->
+            <div>                
+                <a href="https://www.linkedin.com/in/erdemhursutefendioglu/" class="me-4 text-reset">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/ErdyEe" class="me-4 text-reset" target="_blank" >
+                    <i class="fab fa-github"></i>
+                </a>
+                <span style="padding-right: 50px;"></span>
+                <a href="https://www.linkedin.com/in/irem-ilgin-b12460175/" class="me-4 text-reset">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/iremilgin" class="me-4 text-reset">
+                    <i class="fab fa-github"></i>
+                </a>
+                <span style="padding-right: 50px;"></span>
+                <a href="https://www.linkedin.com/in/yunus-kılıç-250242217/" class="me-4 text-reset">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/yunuskilic10" class="me-4 text-reset">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <!-- Right -->
+        </section>
+        <style>
+            .d-flex p {
+                display: inline-block;
+                margin: 0;
+                padding: 5px;
+            }
+        </style>
+        <section class="d-flex justify-content-end p-2 border-bottom">
+            <div>
+                <p>Erdem</p>
+                <span style="padding-right: 85px;"></span>
+                <p>İrem</p>
+                <span style="padding-right: 85px;"></span>
+                <p>Yunus</p>
+                <span style="padding-right: 15px;"></span>
+            </div>
+        </section>
+
+        <!-- Section: Social media -->
+        <!-- Section: Links  -->
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-gem me-3"></i> AvocadoBurger House
+                        </h6>
+                        <p>
+                            Welcome to the world of AvocadoBurger House! In this special foreword, we want to share the story of our restaurant and our mission with you.
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Products
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset"> Menus </a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset"> Extra Ingredients </a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4"> Contact </h6>
+                        <p><i class="fas fa-home me-3"></i> Istanbul, Suadiye </p>
+                        <p>
+                            <i class="fas fa-envelope me-3"></i>
+                            bilgeadam@bilgeadam.com
+                        </p>
+                        <p><i class="fas fa-phone me-3"></i> +90(555) 444 22 11 </p>
+                        <p><i class="fas fa-phone me-3"></i> 444 0 444</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+        <!-- Copyright -->
+        <!-- Copyright -->
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+
